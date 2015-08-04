@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+           id="fr.csmith.plugins.digits"
+      version="1.0.0">
+    <name>CordovaDigits</name>
+    <description>Digits.com for Cordova</description>
+    <license>MIT</license>
+    <keywords>cordova,digits.com,digits</keywords>
+
+    <js-module src="www/digits.js" name="digits">
+        <clobbers target="fr.csmith.plugins.digits" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="digitsPlugin" >
+                <param name="android-package" value="fr.csmith.plugins.digits.digits" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+            <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+        </config-file>
+
+        <source-file src="src/android/" target-dir="libs" framework="true" />
+        <source-file src="src/android/digits.java" target-dir="src/fr/csmith/plugins/digits" />
+
+    </platform>
+    <!-- /android -->
+
+</plugin>
