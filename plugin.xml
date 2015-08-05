@@ -14,21 +14,34 @@
 
     <!-- android -->
     <platform name="android">
+        <preference name="FABRIC_API_KEY" />
+        <preference name="FABRIC_API_SECRET" />
+
+        <framework src="src/android/digits.gradle" custom="true" type="gradleReference" />
 
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="digitsPlugin" >
-                <param name="android-package" value="fr.csmith.plugins.digits.digits" />
+            <feature name="DigitsPlugin" >
+                <param name="android-package" value="fr.csmith.plugins.digits.CordovaDigits" />
             </feature>
         </config-file>
 
-        <config-file target="AndroidManifest.xml" parent="/*">
+        <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
             <uses-permission android:name="android.permission.RECEIVE_SMS"/>
         </config-file>
 
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data
+                android:name="io.fabric.ApiKey"
+                android:value="$FABRIC_API_KEY" />
+            <meta-data
+                android:name="io.fabric.ApiSecret"
+                android:value="$FABRIC_API_SECRET" />
+        </config-file>
+
         <source-file src="src/android/" target-dir="libs" framework="true" />
-        <source-file src="src/android/digits.java" target-dir="src/fr/csmith/plugins/digits" />
+        <source-file src="src/android/CordovaDigits.java" target-dir="src/fr/csmith/plugins/digits" />
 
     </platform>
     <!-- /android -->
