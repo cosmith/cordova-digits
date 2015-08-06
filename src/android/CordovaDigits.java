@@ -70,7 +70,7 @@ public class CordovaDigits extends CordovaPlugin {
             }
         };
 
-        Digits.getInstance().authenticate(callback);
+        Digits.getInstance().authenticate(callback, cordova.getActivity().getResources().getIdentifier("CustomDigitsTheme", "style", cordova.getActivity().getPackageName()));
     }
 
     private TwitterAuthConfig getTwitterConfig() {

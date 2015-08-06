@@ -26,6 +26,7 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
+            <preference name="android-minSdkVersion" value="10" />
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
             <uses-permission android:name="android.permission.RECEIVE_SMS"/>
@@ -40,7 +41,7 @@
                 android:value="$FABRIC_API_SECRET" />
         </config-file>
 
-        <source-file src="src/android/" target-dir="libs" framework="true" />
+        <source-file src="src/android/themes.xml" target-dir="res/values" />
         <source-file src="src/android/CordovaDigits.java" target-dir="src/fr/csmith/plugins/digits" />
 
     </platform>
